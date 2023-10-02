@@ -1,13 +1,13 @@
 package com.pepper.WishList;
 
-import org.springframework.boot.SpringApplication;
+import javafx.application.Application;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class WishListApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(WishListApplication.class, args);
+		Application.launch(WishCore.class, args);
 	}
 
 }
