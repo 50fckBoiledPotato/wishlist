@@ -4,11 +4,13 @@ import javafx.application.Application;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class WishListApplication {
+public class WishListApplication 
+{
 
-	public static void main(String[] args) {
-		Application.launch(WishCore.class, args);
-	}
+    public static void main(String[] args) 
+    {
+            Application.launch(WishCore.class, args);
+    }
 
 }
 
