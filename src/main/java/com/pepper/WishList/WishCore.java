@@ -23,6 +23,7 @@ public class WishCore extends Application
         scene = new Scene(loadFXML("wishlist"));
         stage.setScene(scene);
         stage.setTitle("Wishlist");
+        stage.setResizable(false);
         stage.show();
         
     }
