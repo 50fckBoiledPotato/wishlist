@@ -55,6 +55,12 @@ public class WishlistController implements Initializable
         Table table = new Table(tableContainer, Wish.class);
         wishList = model.findAll();
         table.setItems(wishList);
+        table.addActionColumn("Delete", (wish, index) ->
+        {
+            model.deleteWish((Wish) wish);
+            showTable();
+        });
+        
     }
     
     public void saveUp()
@@ -82,7 +88,6 @@ public class WishlistController implements Initializable
             {
                 oszto++;
                 left2go.add(i);
-                System.out.println("osztó: " + oszto);
             }
         }
         if(oszto == 0){
@@ -90,7 +95,7 @@ public class WishlistController implements Initializable
         }
         
         int hanyados = osztando / oszto;  
-        System.out.println("hanyados= " + hanyados);
+        
         return hanyados;
     }
     

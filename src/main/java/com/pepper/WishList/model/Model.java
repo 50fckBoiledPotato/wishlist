@@ -33,11 +33,11 @@ public class Model
     {
         wishRepo.updateProgress(id, progress);
     }
-    
+
     @Transactional
-    public void updateIsPurchased(boolean value, int id)
+    public void deleteWish(Wish wish)
     {
-        wishRepo.updateIsPurchased(value, id);
+        wishRepo.delete(wish);
     }
 
 }

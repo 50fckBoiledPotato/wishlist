@@ -18,14 +18,14 @@ public class Wish
     private int savings;
     
     private Float progress;
-    private boolean isPurchased;
+    
 
     public Wish( String name, int price) 
     {
         this.name = name;
         this.price = price;
         savings = 0;
-        isPurchased = false;
+        
         progress = 0.0f;
     }
     public Wish(){}
@@ -38,16 +38,10 @@ public class Wish
     }
     public int getPrice() {
         return price;
-    }
-    public boolean isIs_purchased() {
-        return isPurchased;
-    }
+    }    
     public int getSavings() {
         return savings;
-    }
-    public boolean isIsPurchased() {
-        return isPurchased;
-    }
+    }    
     public float getProgress() {
         return progress;
     }
@@ -59,15 +53,11 @@ public class Wish
     public void setPrice(int price) {
         this.price = price;
     }
-    public void setIs_purchased(boolean is_purchased) {
-        this.isPurchased = is_purchased;
-    }
+    
     public void setSavings(int savings) {
         this.savings = savings;
     }
-    public void setIsPurchased(boolean isPurchased) {
-        this.isPurchased = isPurchased;
-    }
+
     public void setProgress(float progress) {
         this.progress = progress;
     }
@@ -75,7 +65,7 @@ public class Wish
 
     @Override
     public String toString() {
-        return "Wish{" + "id=" + id + ", name=" + name + ", price=" + price + ", is_purchased=" + isPurchased + '}';
+        return "Wish{" + "id=" + id + ", name=" + name + ", price=" + price + '}';
     }
     
 }

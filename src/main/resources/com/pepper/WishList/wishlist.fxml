@@ -120,13 +120,6 @@
                <padding>
                   <Insets top="5.0" />
                </padding>
-               <children>
-                  <Button mnemonicParsing="false" text="Achived!">
-                     <HBox.margin>
-                        <Insets right="10.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
             </HBox>
          </children>
       </VBox>

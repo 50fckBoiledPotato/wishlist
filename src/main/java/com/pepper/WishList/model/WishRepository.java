@@ -12,6 +12,8 @@ public interface WishRepository extends CrudRepository<Wish, Integer>
     @Override
     Wish save(Wish wish);
     
+    void delete(Wish wish);
+    
     @Override
     List<Wish> findAll();
     
@@ -22,9 +24,6 @@ public interface WishRepository extends CrudRepository<Wish, Integer>
     
     @Modifying
     @Query("UPDATE Wish w SET w.progress = :progress WHERE w.id = :id")
-    int updateProgress(@Param("id") Integer id, @Param("progress") Float progress);
-    
-    @Modifying
-    @Query("UPDATE Wish w SET w.isPurchased = :value WHERE w.id = :id")
-    void updateIsPurchased(@Param("value") boolean value, @Param("id") Integer id);
+    int updateProgress(@Param("id") Integer id, @Param("progress") Float progress);    
+
 }
