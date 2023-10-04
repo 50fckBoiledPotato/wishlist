@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pepper.WishList.controller.WishlistController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pepper.WishList.controller.WishlistController">
     <stylesheets>
         <URL value="@/styles/wishlist.css" />
     </stylesheets>
    <children>
-      <VBox prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: rgb(70,70,85);">
+      <VBox prefHeight="400.0" prefWidth="350.0" style="-fx-background-color: rgb(70,70,85);">
          <children>
             <Label text="Wish!" textFill="WHITE">
                <font>
@@ -25,7 +25,7 @@
                   <Insets left="120.0" />
                </VBox.margin>
             </Label>
-            <HBox prefHeight="35.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: rgb(90,90,115);">
+            <HBox maxWidth="350.0" minWidth="350.0" prefHeight="35.0" prefWidth="350.0" spacing="5.0" style="-fx-background-color: rgb(90,90,115);">
                <children>
                   <Label text="New item" textFill="WHITE">
                      <font>
@@ -51,7 +51,7 @@
                   <Insets top="5.0" />
                </padding>
             </HBox>
-            <HBox prefHeight="35.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: rgb(90,90,115);">
+            <HBox prefHeight="35.0" prefWidth="350.0" spacing="5.0" style="-fx-background-color: rgb(90,90,115);">
                <children>
                   <Label text="Price" textFill="WHITE">
                      <font>
@@ -74,7 +74,7 @@
                   <Insets top="5.0" />
                </padding>
             </HBox>
-            <HBox alignment="BASELINE_RIGHT" prefHeight="35.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: rgb(90,90,115);">
+            <HBox alignment="BASELINE_RIGHT" prefHeight="35.0" prefWidth="350.0" spacing="5.0" style="-fx-background-color: rgb(90,90,115);">
                <padding>
                   <Insets top="5.0" />
                </padding>
@@ -86,12 +86,12 @@
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="BASELINE_RIGHT" prefHeight="35.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: rgb(70,70,85);">
+            <HBox alignment="BASELINE_RIGHT" prefHeight="35.0" prefWidth="350.0" spacing="5.0" style="-fx-background-color: rgb(70,70,85);">
                <padding>
                   <Insets top="5.0" />
                </padding>
             </HBox>
-            <HBox alignment="BASELINE_LEFT" prefHeight="35.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: rgb(70,70,85);">
+            <HBox alignment="BASELINE_LEFT" prefHeight="35.0" prefWidth="350.0" spacing="5.0" style="-fx-background-color: rgb(70,70,85);">
                <padding>
                   <Insets top="5.0" />
                </padding>
@@ -104,33 +104,40 @@
                         <Insets left="10.0" />
                      </padding>
                   </Label>
-                  <TextField prefHeight="25.0" prefWidth="155.0">
+                  <TextField fx:id="saveTF" prefHeight="25.0" prefWidth="213.0">
                      <HBox.margin>
                         <Insets left="12.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" text="Save">
+                  <Button mnemonicParsing="false" onAction="#saveUp" text="Save">
                      <HBox.margin>
-                        <Insets left="15.0" />
+                        <Insets left="5.0" />
                      </HBox.margin>
                   </Button>
                </children>
             </HBox>
-            <HBox alignment="BASELINE_RIGHT" prefHeight="35.0" prefWidth="200.0" spacing="5.0" style="-fx-background-color: rgb(70,70,85);">
+            <HBox alignment="BASELINE_RIGHT" prefHeight="35.0" prefWidth="350.0" spacing="5.0" style="-fx-background-color: rgb(70,70,85);">
                <padding>
                   <Insets top="5.0" />
                </padding>
+               <children>
+                  <Button mnemonicParsing="false" text="Achived!">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
             </HBox>
          </children>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="300.0" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: rgb(90,90,115);">
+      <VBox alignment="TOP_CENTER" layoutX="350.0" prefHeight="400.0" prefWidth="350.0" style="-fx-background-color: rgb(90,90,115);">
          <children>
             <Label text="List" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <AnchorPane fx:id="tableContainer" maxHeight="342.0" maxWidth="300.0" minHeight="342.0" minWidth="300.0" prefHeight="342.0" prefWidth="300.0" />
+            <AnchorPane fx:id="tableContainer" maxHeight="342.0" maxWidth="350.0" minHeight="342.0" minWidth="350.0" prefHeight="342.0" prefWidth="350.0" />
          </children>
       </VBox>
    </children>

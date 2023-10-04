@@ -27,7 +27,8 @@ public class Table<T> extends TableView<T>
                 //TableColumn<Income, Integer> idCol = new TableColumn<>("ID");
                 TableColumn<T, String> column = new TableColumn<>(header);
                 //idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-                column.setCellValueFactory(cellData -> {
+                column.setCellValueFactory(cellData -> 
+                {
                     try 
                     {   // itt derül ki a változók tulajdonsága
                         //Java reflection minden fieldet Object típusként kezel függetlenül a field tulajdonságától(String, int..)
@@ -41,8 +42,14 @@ public class Table<T> extends TableView<T>
                         e.printStackTrace();
                         return new SimpleStringProperty("");
                     }
-                });
+                });                
                 column.setMinWidth(USE_PREF_SIZE);
+                
+                if(field.getType() == Boolean.class || field.getType() == boolean.class)
+                {
+                   
+                }
+                
                 getColumns().add(column);
             }
         }
