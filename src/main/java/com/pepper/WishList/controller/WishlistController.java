@@ -55,12 +55,13 @@ public class WishlistController implements Initializable
         Table table = new Table(tableContainer, Wish.class);
         wishList = model.findAll();
         table.setItems(wishList);
+        
         table.addActionColumn("Delete", (wish, index) ->
         {
             model.deleteWish((Wish) wish);
             showTable();
+            
         });
-        
     }
     
     public void saveUp()
