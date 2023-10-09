@@ -39,5 +39,15 @@ public class Model
     {
         wishRepo.delete(wish);
     }
+    
+    public boolean isDone(int id)
+    {
+        int price = wishRepo.findPriceById(id);
+        int saving = wishRepo.findSavingsById(id);        
+        System.out.println("price modelből" + price);
+        System.out.println("saving modelből" + saving);
+        
+        return price == saving;
+    }
 
 }

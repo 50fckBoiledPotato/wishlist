@@ -8,8 +8,12 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.stereotype.Controller;
@@ -27,6 +31,7 @@ public class WishlistController implements Initializable
     AnchorPane tableContainer;
     private int oszto = 0;
     private List<Integer> left2go;
+    private Table table;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) 
@@ -48,21 +53,37 @@ public class WishlistController implements Initializable
             showTable();
         }        
     }
-
+    
     private void showTable() 
     {
         tableContainer.getChildren().clear();
-        Table table = new Table(tableContainer, Wish.class);
+        table = new Table(tableContainer, Wish.class);
         wishList = model.findAll();
         table.setItems(wishList);
         
+        
+        boolean isDone = model.isDone(wishList.get(0).getId());
+        System.out.println("isDone showTable" + isDone);
+        
+        BooleanBinding enableCondition = new BooleanBinding() {
+            @Override
+            protected boolean computeValue() 
+            {
+                return model.isDone(wishList.get(0).getId());
+            }
+        };
+        
+        
         table.addActionColumn("Delete", (wish, index) ->
         {
-            model.deleteWish((Wish) wish);
+            model.deleteWish((Wish) wish);            
+            
             showTable();
             
-        });
+        }, enableCondition);
     }
+    
+    
     
     public void saveUp()
     {        
@@ -74,7 +95,8 @@ public class WishlistController implements Initializable
             divideSaving(hanyados);
             
             showTable();
-        }
+            
+        }        
     }
     
     public int getQuotient(int osztando)
@@ -118,8 +140,8 @@ public class WishlistController implements Initializable
             if(savings > price)
             {
                 model.updateSaving(price, id);
-                
-                int extra = savings - price; System.out.println("extra: " + extra);
+                setProgress(price, savings, id);
+                int extra = savings - price;
                 
                 actualSaving += extra / (left2goSize); 
                 // TUDNOM KELL H EBBEN A KÖRBEN ELÉRTE-E VALAMELYIK A CÉLÖSSZEGET
@@ -127,8 +149,9 @@ public class WishlistController implements Initializable
             }                
             else {                
                 model.updateSaving(savings, id);
+                setProgress(price, savings, id);
             }
-            setProgress(price, savings, id);
+            
         }
     }
     

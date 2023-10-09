@@ -26,4 +26,9 @@ public interface WishRepository extends CrudRepository<Wish, Integer>
     @Query("UPDATE Wish w SET w.progress = :progress WHERE w.id = :id")
     int updateProgress(@Param("id") Integer id, @Param("progress") Float progress);    
 
+    @Query("SELECT w.price FROM Wish w WHERE w.id = :id")
+    Integer findPriceById(@Param("id") Integer id);
+    
+    @Query("SELECT w.savings FROM Wish w WHERE w.id = :id")
+    Integer findSavingsById(@Param("id") Integer id);
 }
