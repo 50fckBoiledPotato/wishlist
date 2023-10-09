@@ -137,7 +137,9 @@ public class WishlistController implements Initializable
             if(savings > price)
             {
                 model.updateSaving(price, id);
-                setProgress(price, savings, id);
+                model.updateProgress(100.00f, id);                  
+                
+                
                 int extra = savings - price;
                 
                 if(left2goSize > 0)
