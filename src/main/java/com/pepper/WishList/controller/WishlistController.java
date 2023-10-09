@@ -60,16 +60,13 @@ public class WishlistController implements Initializable
         table = new Table(tableContainer, Wish.class);
         wishList = model.findAll();
         table.setItems(wishList);
-        
-        
-        boolean isDone = model.isDone(wishList.get(0).getId());
-        System.out.println("isDone showTable" + isDone);
+       
         
         BooleanBinding enableCondition = new BooleanBinding() {
             @Override
             protected boolean computeValue() 
             {
-                return model.isDone(wishList.get(0).getId());
+                return false;
             }
         };
         
@@ -143,8 +140,12 @@ public class WishlistController implements Initializable
                 setProgress(price, savings, id);
                 int extra = savings - price;
                 
-                actualSaving += extra / (left2goSize); 
-                // TUDNOM KELL H EBBEN A KÖRBEN ELÉRTE-E VALAMELYIK A CÉLÖSSZEGET
+                if(left2goSize > 0)
+                {
+                    actualSaving += extra / (left2goSize); 
+                }
+                
+                
                                             
             }                
             else {                
