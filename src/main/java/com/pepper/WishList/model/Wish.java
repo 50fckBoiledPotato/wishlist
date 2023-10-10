@@ -8,7 +8,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "wishlist")
-public class Wish 
+public class Wish implements Doneable
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,6 +30,11 @@ public class Wish
     }
     public Wish(){}
 
+    @Override
+    public boolean isDone()
+    {        
+        return price == savings;
+    }
     public int getId() {
         return id;
     }

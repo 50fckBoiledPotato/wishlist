@@ -1,5 +1,6 @@
 package com.pepper.WishList.gui;
 
+import com.pepper.WishList.model.Doneable;
 import jakarta.persistence.Transient;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -80,12 +81,19 @@ public class Table<T> extends TableView<T>
                         {
                             Button button = new Button(buttonText);
                             
+                            T ent = getTableRow().getItem();
+                            if(ent != null && ent instanceof Doneable)
+                            {
+                                button.setDisable(((Doneable) ent).isDone());
+                            }
+                            
                             button.setOnAction(evt -> 
                             {
                                 int index = getIndex();
                                 T entity = getTableRow().getItem();
 
                                 onClick.accept(entity, index);
+                                
                             });
                             
                             setGraphic(button);

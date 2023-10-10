@@ -77,7 +77,7 @@ public class WishlistController implements Initializable
             
             showTable();
             
-        }, enableCondition);
+        });
     }
     
     
@@ -145,10 +145,7 @@ public class WishlistController implements Initializable
                 if(left2goSize > 0)
                 {
                     actualSaving += extra / (left2goSize); 
-                }
-                
-                
-                                            
+                }               
             }                
             else {                
                 model.updateSaving(savings, id);
