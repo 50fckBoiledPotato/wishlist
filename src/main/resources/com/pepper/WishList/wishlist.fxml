@@ -121,7 +121,7 @@
                   <Insets top="5.0" />
                </padding>
                <children>
-                  <Label text="Extra: " textFill="WHITE">
+                  <Label fx:id="msgLbl" text="Extra: " textFill="WHITE">
                      <font>
                         <Font name="Calibri" size="14.0" />
                      </font>
