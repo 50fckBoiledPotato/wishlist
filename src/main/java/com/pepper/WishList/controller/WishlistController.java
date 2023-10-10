@@ -27,7 +27,7 @@ public class WishlistController implements Initializable
     @FXML
     private AnchorPane tableContainer;
     @FXML
-    private Label extraLbl;
+    private Label extraLbl, msgLbl;
     private int oszto = 0;
     private List<Integer> left2go;
     private Table table;
@@ -117,6 +117,8 @@ public class WishlistController implements Initializable
         System.out.println("left2goSize" + left2goSize);
         if(!left2go.isEmpty())
         {
+            msgLbl.setText("Extra: ");
+            extraLbl.setText("");
                 for(int i = 0; i < left2go.size(); i++)
             {            
                 left2goSize--;
@@ -149,6 +151,7 @@ public class WishlistController implements Initializable
                 }            
             }
         } else {
+            msgLbl.setText("You are done with your savings, you've got extra: ");
             String extraTxt = String.valueOf(saveTF.getText());
             extraLbl.setText(extraTxt);
        }
