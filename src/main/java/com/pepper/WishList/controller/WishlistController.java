@@ -14,6 +14,7 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import org.springframework.stereotype.Controller;
@@ -28,7 +29,9 @@ public class WishlistController implements Initializable
     @FXML
     private TextField itemTF, priceTF, saveTF;
     @FXML
-    AnchorPane tableContainer;
+    private AnchorPane tableContainer;
+    @FXML
+    private Label extraLbl;
     private int oszto = 0;
     private List<Integer> left2go;
     private Table table;
@@ -91,7 +94,10 @@ public class WishlistController implements Initializable
             int hanyados = getQuotient(osztando);
             divideSaving(hanyados);
             
-            showTable();
+            if(!left2go.isEmpty()){
+                showTable();
+            }
+            
             
         }        
     }
@@ -123,36 +129,46 @@ public class WishlistController implements Initializable
     {
         int actualSaving = hanyados;
         int left2goSize = left2go.size();
-        
-        for(int i = 0; i < left2go.size(); i++)
-        {            
-            left2goSize--;
-            Wish wish = wishList.get(left2go.get(i));
-            int id = wish.getId();
-            int price = wish.getPrice();
-            int currentSaving = wish.getSavings();
-            
-            int savings = currentSaving + actualSaving;
-                
-            if(savings > price)
-            {
-                model.updateSaving(price, id);
-                model.updateProgress(100.00f, id);                  
-                
-                
-                int extra = savings - price;
-                
-                if(left2goSize > 0)
+        int extra = 0;
+        System.out.println("left2goSize" + left2goSize);
+        if(!left2go.isEmpty())
+        {
+                for(int i = 0; i < left2go.size(); i++)
+            {            
+                left2goSize--;
+                Wish wish = wishList.get(left2go.get(i));
+                int id = wish.getId();
+                int price = wish.getPrice();
+                int currentSaving = wish.getSavings();
+
+                int savings = currentSaving + actualSaving;
+
+                if(savings > price)
                 {
-                    actualSaving += extra / (left2goSize); 
-                }               
-            }                
-            else {                
-                model.updateSaving(savings, id);
-                setProgress(price, savings, id);
+                    model.updateSaving(price, id);
+                    model.updateProgress(100.00f, id);                  
+
+
+                    extra = savings - price;
+                    String extraTxt = String.valueOf(extra);
+                    extraLbl.setText(extraTxt);
+                    if(left2goSize > 1)
+                    {
+                        actualSaving += extra / (left2goSize); 
+                    } else {
+                        actualSaving += extra;
+                    }      
+                }                
+                else {                
+                    model.updateSaving(savings, id);
+                    setProgress(price, savings, id);
+                }            
             }
-            
-        }
+        } else {
+            String extraTxt = String.valueOf(saveTF.getText());
+            extraLbl.setText(extraTxt);
+       }
+        
     }
     
     public void setProgress(int price, int savings, int id)
