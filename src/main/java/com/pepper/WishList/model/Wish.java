@@ -33,7 +33,7 @@ public class Wish implements Doneable
     @Override
     public boolean isDone()
     {        
-        return price == savings;
+        return price != savings;
     }
     public int getId() {
         return id;
