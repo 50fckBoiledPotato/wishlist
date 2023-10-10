@@ -8,12 +8,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.application.Platform;
-import javafx.beans.binding.Bindings;
-import javafx.beans.binding.BooleanBinding;
 import javafx.fxml.Initializable;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
@@ -62,17 +58,7 @@ public class WishlistController implements Initializable
         tableContainer.getChildren().clear();
         table = new Table(tableContainer, Wish.class);
         wishList = model.findAll();
-        table.setItems(wishList);
-       
-        
-        BooleanBinding enableCondition = new BooleanBinding() {
-            @Override
-            protected boolean computeValue() 
-            {
-                return false;
-            }
-        };
-        
+        table.setItems(wishList); 
         
         table.addActionColumn("Delete", (wish, index) ->
         {
@@ -82,8 +68,6 @@ public class WishlistController implements Initializable
             
         });
     }
-    
-    
     
     public void saveUp()
     {        
